@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <!-- <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
+    <link rel="stylesheet" href="../../css/style2.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+</head>
+<body>
+    <div id="login-div">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Login -->
+                    <div class="social-buttons">
+                        <div class="iconSpecial"><i class="glyphicon glyphicon-user"></i>Login</div>
+                    </div>
+                    <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                        <div class="form-group">
+                            <label class="sr-only" for="exampleInputEmail2">login</label>
+                            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Ingresar Usuario" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only" for="exampleInputPassword2">Senha</label>
+                            <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Ingresar Password" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="field-validation-error"></label>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
+                        </div>
+                        <div class="checkbox text-dark">
+                            <label>
+                                <input type="checkbox"> Recordar usuario
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    </div>
+    <script src="../js/jquery-1.10.2.min.js"></script>
+    <script src="../js/jquery.validate.min.js"></script>
+    <script src="../js/jquery.validate.unobtrusive.min.js"></script> 
+</body>
+</html>
