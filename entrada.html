@@ -1,0 +1,1551 @@
+<html>
+
+ 
+<head>
+    <title>test</title>
+   
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <!-- <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
+    <script src="../js/jseventos.js"></script>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+</head>
+<body>
+
+    <main>
+        <div class="loading hidden">Loading…</div>
+        <div class="container-fluid" style="height:inherit">
+            <div class="row" id="FrameTituloPM">
+                <div class="col-12">
+                    <h3 style="text-align:center">@ViewBag.Titulo</h3>
+                </div>
+                <input id="indEmpExt" class="form-control form-control-sm" hidden readonly disabled value="@ViewBag.IndEmpLDS" />
+
+            </div>
+            <div style="height:20px">
+
+            </div>
+ 
+            <div class="row" id="FrameCabeceraPM">
+                <div id="panelSST" class="row">
+                    <div class="input-group" style="margin-left:50px">
+                            <label class="small">N° Folio:</label>
+                            <span class="mx-1"></span>
+                            <input id="txtFolio" type="text" class="form-control" placeholder="0000000" style="text-align: center;" maxlength="7">
+                            <span class="mx-1"></span>
+                            <input id="lblEstadoEN" class="form-control form-control-sm" readonly disabled />
+                            <button class="btn btn-outline-secondary btn-primary btn-sm" id="btnBuscarFolio" type="button"><i class="fas fa-search"></i></button>
+                            <span class="mx-1"></span>
+                            <button class="btn btn-outline-secondary btn-primary btn-sm" id="btnLeerFolio" type="button">Leer</button>
+                            <span class="mx-1"></span>
+                            <button id="btnLimpiarPrincipal" type="button" class="btn btn-btn-success-t1"><i class="fa fa-paint-brush"></i> Limpiar</button>
+                    </div>
+
+                    
+                    <div class="col-md-1">
+                        <label class="small">Emisi&oacute;n:</label>
+                    </div>
+                    <div class="col-md-2">
+                        <div class='input-group date'>
+                            <input type="date" class="form-control fltFecha" id="fltEmision" step="1" max="9999-12-31" disabled>
+                        </div>
+                    </div>
+
+                    <div class="col-md-1">
+                        <label class="small">Recepci&oacute;n:</label>
+                    </div>
+                    <div class="col-md-1">
+                        <input id="txtRolReceptor" class="form-control form-control-sm" readonly disabled />
+                    </div>
+                    <div class="col-md-2">
+                        <div class='input-group date'>
+                            <input type="date" class="form-control fltFecha" id="fltRecepcion" step="1" max="9999-12-31" disabled>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            
+            <div class="row" id="FrameContenidoPM">
+                <div class="col-md-12">
+                    <div id="panelTabs" class="ui-tabs ui-corner-all ui-widget ui-widget-content">
+                        <ul>
+                            <li><a href="#tabs-3" class="ui-tabs-anchor">Datos Generales</a></li>
+                            <li><a href="#tabs-4" class="ui-tabs-tab ui-corner-top ui-state-default ui-tab">Detalles Registrados</a></li>
+                        </ul>
+                        <div id="tabs-3" class="tab">
+                            <div class="row form-group">
+                               
+                                <div class="col-md-3 col-sm-4 col-lg-4 container">
+                                    <div class="panel panel-primary">
+                                        <h6>Datos Principales</h6>
+                                        <div class="panel-body" style="height:450px">
+                                          
+                                            <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                                <div class="col-md-3" style="padding-left:0px">
+                                                    <label class="small">Bodega:</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <select id="cboBodega" class='form-control form-control-sm' data-live-search='true' style="font-size:small"></select>
+                                                </div>
+                                            </div>
+                                           
+                                            <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                                <div class="col-md-3" style="padding-left:0px">
+                                                    <label class="small">Tipo:</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <select id="cboIndDirecto" class='form-control form-control-sm' style="font-size: small" data-live-search='true'></select>
+                                                </div>
+
+                                            </div>
+                                       
+                                            <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                                <div class="col-md-3" style="padding-left:0px">
+                                                    <label class="small">Fec. Ingreso:</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div class='input-group date'>
+                                                        <input type="date" class="form-control fltFecha" id="fecha" step="1" max="9999-12-31">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                           
+                                            <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                                <div class="col-md-3" style="padding-left:0px">
+                                                    <label class="small">Fec. Aprobación:</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div class='input-group date'>
+                                                        <input type="date" class="form-control fltFecha" id="fecha_apr" step="1" max="9999-12-31">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                             
+                                            <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                                <div class="col-md-3" style="padding-left:0px">
+                                                    <label class="small">Guía Proveedor:</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <input id="txtguia_folio" class="form-control form-control-sm" style="font-size:small" disabled />
+                                                </div>
+                                            </div>
+
+                                            
+                                            <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                                <div class="col-md-3" style="padding-left:0px">
+                                                    <label class="small">Fec. Guía:</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div class='input-group date'>
+                                                        <input type="date" class="form-control fltFecha" id="guia_fecha" step="1" max="9999-12-31">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                           
+                                            <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                                <div class="col-md-3" style="padding-left:0px">
+                                                    <label class="small">T.Cambio:</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <input id="txtTCambio" class="form-control form-control-sm" style="font-size:small" disabled />
+                                                </div>
+                                            </div>
+
+                                     
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                        
+                                <div class="col-md-3 col-sm-4 col-lg-8 container">
+                                    <div class="panel panel-primary">
+                                        <h6>Documento Origen Orden de compra / Control de Calidad</h6>
+                                        <div class="panel-body" style="height: 480px;">
+
+                                     
+                                            <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                                <div class="col-md-2" style="padding-left:0px">
+                                                    <label class="small">Folio OC:</label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="input-group">
+                                                        <input id="txtFolioOC" class="form-control form-control-sm" style="font-size:small" width="100" />
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-outline-secondary btn-primary btn-sm" id="btnBuscarTramoVia" type="button"><i class="fas fa-search"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <input id="txtDescOC" class="form-control form-control-sm" style="font-size:small" width="100"  disabled />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-check-inline  col-md-12" style="padding-left:2px">
+
+                                                <div class="col-md-2" style="padding-left:0px">
+                                                    <label class="small">Moneda OC:</label>
+                                                    <input id="txtMonedaOC" class="form-control form-control-sm" style="font-size:xx-small" disabled />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input id="txtMonedaOC" class="form-control form-control-sm" style="font-size:small" width="100" />
+     
+                                                </div>
+                                            </div>
+
+                                          
+                                            <div class="form-check-inline  col-md-12" style="padding-left:2px">
+
+                                                <div class="col-md-2" style="padding-left:0px">
+                                                    <label class="small">Pre-Entrada:</label>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="input-group">
+                                                        <input id="txtPreentrada" class="form-control form-control-sm" style="font-size:small" />
+                                                        <div class="input-group-append">
+                                                            <button type="button" id="btnBuscarSST" class="btn btn-primary btn-sm"><i class="fas fa-search"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                         
+                                            <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                                
+                                                <div class="form-check-inline">
+                                                    <label class="form-check-label small" style="padding-top:5px">
+                                                        <input type="checkbox" id="chkActFijo" class="form-check-input" name="Obra">Activo Fijo
+                                                    </label>
+                                                </div>
+                                               
+                                                <div class="form-check-inline">
+                                                    <label class="form-check-label small" style="padding-top:5px">
+                                                        <input type="checkbox" id="chkOservicio" class="form-check-input" name="Obra">Orden Servicio
+                                                    </label>
+                                                </div>
+
+                                               
+                                                <div class="form-check-inline">
+                                                    <label class="form-check-label small" style="padding-top:5px">
+                                                        <input type="checkbox" id="chkOCA" class="form-check-input" name="Obra">OCA
+                                                    </label>
+                                                </div>
+
+                                              
+                                                <div class="form-check-inline">
+                                                    <label class="form-check-label small" style="padding-top:5px">
+                                                        <input type="checkbox" id="chkVariable" class="form-check-input" name="Obra">Orden Variable
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                       
+                                            <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                                <div class="col-md-2" style="padding-left:0px">
+                                                    <label class="small">Proveedor:</label>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <div class="input-group">
+                                                        <input id="txtProvee" class="form-control form-control-sm" style="font-size:small" />
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-outline-secondary btn-primary btn-sm" id="btnBuscarTramoVia" type="button"><i class="fas fa-search"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <input id="txtDescProvee" class="form-control form-control-sm" style="font-size:small" disabled />
+                                                </div>
+                                            </div>
+
+
+                                         
+                                            <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                                <div class="col-md-2" style="padding-left:0px">
+                                                    <label class="small">Origen:</label>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <input id="txtOrigen" class="form-control form-control-sm" style="font-size:small" width="80" disabled />
+                                                </div>
+
+                                                <div class="col-md-2" style="padding-left:0px">
+                                                    <label class="small">Tipo de Compra:</label>
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    <input id="txtTipoCompra" class="form-control form-control-sm" style="font-size:small" width="80" disabled />
+                                                </div>
+                                            </div>
+
+                                           
+                                            <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                                <div class="col-md-2" style="padding-left:0px">
+                                                    <label class="small">Cr. Responsable:</label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <select id="cboCrResponsable" class='form-control form-control-sm' data-live-search='true' style="font-size:small"></select>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input id="txtCrDescResponsable" class="form-control form-control-sm" style="font-size:small" disabled />
+                                                </div>
+                                            </div>
+
+                                          
+                                            <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                                <div class="col-md-2" style="padding-left:0px">
+                                                    <label class="small">Cr. Destino:</label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <select id="cboCrDestino" class='form-control form-control-sm' data-live-search='true' style="font-size:small"></select>
+                                                </div>
+                                                 <div class="col-md-6">
+                                                    <input id="txtCrDescDestino" class="form-control form-control-sm" style="font-size:small" disabled />
+                                                </div> 
+                                            </div>
+
+                                             
+                                            <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                                <div class="col-md-2" style="padding-left:0px">
+                                                    <label class="small">Nro Obra:</label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="input-group">
+                                                        <input id="txtObra" class="form-control form-control-sm" style="font-size:small" />
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-outline-secondary btn-primary btn-sm" id="btnBuscarTramoVia" type="button"><i class="fas fa-search"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <input id="txtDesCliente" class="form-control form-control-sm" style="font-size:small" disabled />
+                                                </div>
+                                            </div>
+
+                                            
+                                            <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                                <div class="col-md-2" style="padding-left:0px">
+                                                    <label class="small">Contratista:</label>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <input id="txtContratista" class="form-control form-control-sm" style="font-size:small" disabled />
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <input id="txtDescContratista" class="form-control form-control-sm" style="font-size:small" disabled />
+                                                </div>
+                                            </div>
+
+                                  
+                                            <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                                <div class="col-md-2" style="padding-left:0px">
+                                                    <label class="small">Responsable:</label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="input-group">
+                                                        <input id="TxtResponsable" class="form-control form-control-sm" style="font-size:small" />
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-outline-secondary btn-primary btn-sm" id="btnBuscarTramoVia" type="button"><i class="fas fa-search"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <input id="TxtResponsable_desc" class="form-control form-control-sm" style="font-size:small" />
+                                                </div>
+                                            </div>
+
+                                       
+                                            <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                                <div class="col-md-2" style="padding-left:0px">
+                                                    <label class="small">Digitador:</label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <input id="txtDigitador1" class="form-control form-control-sm" style="font-size:small" />
+                                                </div>
+                                            </div>
+
+                                         
+                                            <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                                <div class="col-md-2" style="padding-left:0px">
+                                                    <label class="small">Observacion:</label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <input id="txtObservacion" class="form-control form-control-sm" style="font-size:small" />
+                                                </div>
+                                            </div>
+
+                                            <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                                <div class="col-md-2" style="padding-left:0px">
+                                                    <label class="small">Obs.OC:</label>
+                                                </div>
+                                                <div class="col-md-10">
+                                                    <input id="txtOBSOC" class="form-control form-control-sm" style="font-size:small" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                <button id="btnGuardarEN1" type="button" class="btn btn-secondary"><i class="fa fa-save"></i> Guardar</button>
+                                <span class="mx-1"></span>
+                                <button id="btnAprobarEN1" type="button" class="btn btn-secondary"><i class="fa fa-check-circle"></i> Aprobar</button>
+                                <span class="mx-1"></span>
+                                <button id="btnAnularEN1" type="button" class="btn btn-secondary"><i class="fa fa-ban"></i> Anular</button>
+                                <span class="mx-1"></span>
+                                <button id="btnValorizar" type="button" class="btn btn-success"><i class="fa fa-balance-scale"></i> Valorizar</button>
+                                <span class="mx-1"></span>
+                                <button id="btnEnviarPro" type="button" class="btn btn-success"><i class="fas fa-envelope"></i> Enviar a Proveedor</button>
+                                <span class="mx-1"></span>
+                                <button id="btnImprimirEN1" type="button" class="btn btn-success"><i class="fa fa-print"></i> Exportar</button>
+                                <span class="mx-1"></span>
+                                <button id="btnAnadir" type="button" class="btn btn-success"><i class="fa fa-archive"></i> Añadir Factura</button>
+                            </div>
+
+                            </div>
+
+                        <div id="tabs-4" class="tab">
+                            <div class="row form-group" style="margin-bottom:0px;">
+                                <div class="col-md-4 col-sm-6 col-lg-9 container" style="margin-right:0px; padding-right:0px;">
+                                    <div class="panel panel-primary">
+                                        <div class="panel-body">
+                                            <div class="form-check-inline  col-md-12" style="padding:2px">
+                                                <div class="col-md-4">
+                                                    <div class="input-group">
+                                                        <div class="col-3" style="padding-left:0px">
+                                                            <label class="small">Material</label>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="form-check-inline">
+                                                                <label class="form-check-label small">
+                                                                    <input type="checkbox" id="chkConSaldo" class="form-check-input" name="AutFact">Con Saldo
+                                                                </label>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-check-inline  col-md-12">
+                                                        <div class="col-md-1">
+                                                            <label class="small"></label>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label class="small">Cantidad</label>
+                                                        </div>
+                                                        <div class="col-md-3" style="padding:1px;">
+                                                            <label class="small">Cant. Compra</label>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label class="small">Fec. Entrega</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-check-inline  col-md-12" style="padding:2px">
+                                                <div class="col-md-3">
+                                                    <div class="input-group">
+                                                        <input id="txtGrupo" class="form-control form-control-sm" style="font-size: small" maxlength="3" />
+                                                        <input id="txtFolioArt" class="form-control form-control-sm" style="font-size:small" maxlength="4" />
+                                                        <input id="txtMarca" class="form-control form-control-sm" style="font-size:small" maxlength="3" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" />
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-outline-secondary btn-primary btn-sm hidden" id="btnBuscarMaterial" type="button">...</button>
+                                                        </div>
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-outline-secondary btn-primary btn-sm" id="btnConsultaMaterial" type="button"><i class="fas fa-search"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="input-group">
+                                                        <div class="col-md-3">
+                                                            <input id="txtUM" class="form-control form-control-sm" style="font-size:small" disabled />
+                                                        </div>
+                                                        <input id="txtCantidad" class="form-control form-control-sm" style="font-size:small" />
+                                                        <input id="txtCantidadComprar" class="form-control form-control-sm" style="font-size:small" disabled />
+                                                        <input type="date" style="padding:2px;" class="form-control fltFecha" id="fltFechaEntrega" step="1" max="9999-12-31" disabled>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1" style="padding:0px">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-primary btn-small " style="font-size: 11px; padding: 0; width: 300px; height: 28px" id="btnAgregarMat" type="button">Agregar</button>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1" style="padding:0px">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-primary btn-small" style="font-size: 11px; padding: 0; width: 300px; height: 28px" id="btnEliminarMat" type="button">Eliminar</button>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1" style="padding:0px">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-primary btn-small" style="font-size: 11px; padding: 0; width: 300px; height: 28px" id="btnBorrarMat" type="button">Borrar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-check-inline  col-md-12" style="padding:2px">
+                                                <div class="col-md-7">
+                                                    <div class="input-group">
+                                                        <input id="txtDescMaterial" class="form-control form-control-sm" style="font-size:small" disabled />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <select id="cboSustituto" class='form-control form-control-sm' data-live-search='true' style="font-size:small"></select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-6 col-lg-3 containe">
+                                    <div class="panel panel-primary">
+                                        <div class="panel-body">
+
+                                            <div class="form-check-inline">
+                                                <button class="btn btn-primary btn-small" id="btnTraeDetMovProyEqui" type="button" style="font-size: 10px; padding: 0; width: 210px; height: 28px" disabled>Traer Detalle Mov. Proy. Equipos</button>
+                                            </div>
+                                            <div style="height:10px;">
+
+                                            </div>
+                                            <div class="form-check-inline">
+                                                <button class="btn btn-primary btn-small" id="btnHistorial" type="button" style="font-size: 10px; padding: 0; width: 70px; height: 28px" disabled>Historial</button>
+                                                <button class="btn btn-primary btn-small" id="btnSaldo" type="button" style="font-size: 10px; padding: 0; width: 70px; height: 28px" disabled>Saldos</button>
+                                                <button class="btn btn-primary btn-small" id="btnPedido" type="button" style="font-size: 10px; padding: 0; width: 70px; height: 28px" disabled>Pedidos</button>
+                                            </div>
+                                            <div style="height:10px;">
+
+                                            </div>
+                                            <div class="form-check-inline">
+                                                <button class="btn btn-primary btn-small" id="btnSaldoDetExp" type="button" style="font-size: 10px; padding: 0; width: 70px; height: 28px">Saldo Det.</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-4 col-sm-6 col-lg-12 container">
+                                    <div class="panel panel-primary">
+                                        <div class="panel-body">
+                                            <div class="form-check-inline  col-md-12" style="padding:2px">
+                                                <div class="col-md-7">
+                                                    <div class="input-group">
+                                                        <div class="form-check-inline">
+                                                            <label for="txtAutorizadoFac" class="form-check-label small">
+                                                                <input type="checkbox" id="chkAutorizMatCompra" class="form-check-input" name="AutFact">
+                                                                Existen materiales a comprar con saldo y autorizo la compra
+                                                            </label>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <div class="form-check-inline  col-md-12">
+                                                        <div class="col-md-3">
+                                                            <button class="btn btn-primary btn-small" id="btnVerDetSaldo" type="button" style="font-size: 10px; padding: 0; width: 115px; height: 28px" disabled>Ver Detalle Saldo</button>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <button class="btn btn-primary btn-small" id="btnArchMatricula" type="button" style="font-size: 10px; padding: 0; width: 115px; height: 28px" disabled>Arch. Matr&iacute;cula</button>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <button class="btn btn-primary btn-small" id="btnPaquete" type="button" style="font-size: 10px; padding: 0; width: 80px; height: 28px" disabled>Paquete</button>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <button class="btn btn-primary btn-small" id="btnCamion" type="button" style="font-size: 10px; padding: 0; width: 80px; height: 28px" disabled>Por Cami&oacute;n</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <table id="gridPM" style="width: 100%;" class="table table-striped table-hover nowrap table-bordered dataTable no-footer" role="grid">
+                                        <thead>
+                                            <tr>
+                                                <th>Op</th>
+                                                <th>Grupo</th>
+                                                <th>Folio</th>
+                                                <th>Marca</th>
+                                                <th>Descripción</th>
+                                                <th>UM</th>
+                                                <th>Cant. OCompra.</th>
+                                                <th>Cant. Aprobada</th>
+                                                <th>Cant. Entrada.</th>
+                                                <th>Valor</th>
+                                                <th>Fec. Entrega</th>
+                                                <th>Días Atraso</th>
+                                                <th>Días Penalidad</th>
+                                                <th>Justificacion</th>
+                                                <th>Estado Penalidad</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row" id="FrameSalDet" hidden>
+                <div class="col-md-12">
+                    <div class="row form-group">
+                        <div class="col-md-3 col-sm-4 col-lg-12 container">
+                            <div class="panel panel-primary">
+                                <h6>Reserva de Saldos Detallados de Pedido de Material</h6>
+                                <div class="panel-body" style="height:60px">
+                                    <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                        <div class="col-md-2">
+                                            <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                                <div class="col-md-4" style="padding-left:0px">
+                                                    <label class="small">Folio:</label>
+                                                </div>
+                                                <div class="col-md-8" style="padding-left:0px">
+                                                    <input id="txtFolioSalDet" class="form-control form-control-sm" style="font-size:small" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                                <div class="col-md-4" style="padding-left:0px">
+                                                    <label class="small">Fecha:</label>
+                                                </div>
+                                                <div class="col-md-8" style="padding-left:0px">
+                                                    <input id="txtFechaSalDet" class="form-control form-control-sm" style="font-size:small" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                                <div class="col-md-2" style="padding-left:0px">
+                                                    <label class="small" style="text-align:left">Almacén:</label>
+                                                </div>
+                                                <div class="col-md-10" style="padding-left:0px">
+                                                    <input id="txtAlmacenSalDet" class="form-control form-control-sm" style="font-size:small" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" style="padding:5px">
+                                            <button class="btn btn-primary btn-small" id="btnReserSalDet" type="button" style="font-size: 10px; padding: 0; width: 100px; height: 28px">Reservar</button>
+                                        </div>
+                                        <div class="form-group" style="padding:5px">
+                                            <button class="btn btn-primary btn-small" id="btnLiberarSalDet" type="button" style="font-size: 10px; padding: 0; width: 100px; height: 28px">Liberar</button>
+                                        </div>
+                                        <div class="form-group" style="padding:5px">
+                                            <button class="btn btn-primary btn-small" id="btnVolverSalDet" type="button" style="font-size: 10px; padding: 0; width: 100px; height: 28px">Volver</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-lg-12 container">
+                            <div class="panel panel-primary">
+                                <div class="panel-body" style="height:220px">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <table id="gridSalDet" style="width: 100%;" class="table table-striped table-hover nowrap table-bordered dataTable no-footer" role="grid">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Grupo</th>
+                                                        <th>Folio</th>
+                                                        <th>Marca</th>
+                                                        <th>Descripción</th>
+                                                        <th>UM</th>
+                                                        <th>CR Resp.</th>
+                                                        <th>Emp. Ext.</th>
+                                                        <th>CR Dest.</th>
+                                                        <th>Cant. PM</th>
+                                                        <th>Reserva Acum</th>
+
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-4 col-lg-12 container">
+                            <div class="panel panel-primary">
+                                <div class="panel-body" style="height:500px">
+                                    <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                        <div class="col-md-3">
+                                            <label class="small">Material</label>
+                                            <select id="cboMatSalDet" class='form-control form-control-sm' data-live-search='true' style="font-size:small"></select>
+
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label class="small">CR Responsable</label>
+                                            <select id="cboCrRespSalDet" class='form-control form-control-sm' data-live-search='true' style="font-size:small" disabled></select>
+
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label class="small" style="font-size:0">Emp Ext</label>
+                                            <select id="cboEmpExtSalDet" class='form-control form-control-sm' data-live-search='true' style="font-size:small" disabled></select>
+
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label class="small">CR Destino</label>
+                                            <select id="cboCrDestSalDet" class='form-control form-control-sm' data-live-search='true' style="font-size:small" disabled></select>
+
+                                        </div>
+                                        <div class="form-group" style="padding:5px">
+                                            <button class="btn btn-primary btn-small" id="btnLeerDetMatExpSalDet" type="button" style="font-size: 10px; padding: 0; width: 100px; height: 28px">Leer</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-check-inline  col-md-12" style="padding-left:2px">
+
+                                        <div class="col-md-3">
+                                            <label class="small">Indetificador - Serie</label>
+                                            <input id="txtIdenSerieSalDet" class="form-control form-control-sm" style="font-size:small" />
+                                        </div>
+
+                                        <div class="col-md-2">
+                                            <label class="small">Kárdex LDS</label>
+                                            <input id="txtKardexLDSSalDet" class="form-control form-control-sm" style="font-size:small" />
+                                        </div>
+
+                                        <div class="col-md-2">
+                                            <label class="small">Tipo Detalle</label>
+                                            <select id="cboTipDetSalDet" class='form-control form-control-sm' data-live-search='true' style="font-size:small"></select>
+
+                                        </div>
+
+                                        <div class="col-md-2">
+                                            <label class="small">FICHA</label>
+                                            <input id="txtFichaSalDet" class="form-control form-control-sm" style="font-size:small" />
+                                        </div>
+                                        
+                                        <div class="col-md-2">
+                                            <label class="small">Obra</label>
+                                            <input id="txtObraSalDet" class="form-control form-control-sm" style="font-size:small" />
+                                        </div>
+                                    </div>
+                                    <div class="form-check-inline  col-md-12" style="padding-left:2px" hidden>
+ 
+                                        <div class="col-md-2">
+                                            <label class="small">Bobina Origen</label>
+                                            <input id="txtBobOrigSerieSalDet" class="form-control form-control-sm" style="font-size:small" />
+                                        </div>
+ 
+                                        <div class="col-md-1">
+                                            <label class="small">P. Bruto</label>
+                                            <input id="txtPBrutoSalDet" class="form-control form-control-sm" style="font-size:small" />
+                                        </div>
+
+                                        <div class="col-md-1">
+                                            <label class="small">P. Carrete</label>
+                                            <input id="txtPCarreteSalDet" class="form-control form-control-sm" style="font-size:small" />
+
+                                        </div>
+
+                                        <div class="col-md-1">
+                                            <label class="small">Diámetro</label>
+                                            <input id="txtDiametroSalDet" class="form-control form-control-sm" style="font-size:small" />
+                                        </div>
+
+                                        <div class="col-md-2">
+                                            <label class="small">Estado Material</label>
+                                            <select id="cboEstMatSalDet" class='form-control form-control-sm' data-live-search='true' style="font-size:small"></select>
+                                        </div>
+                                       
+                                        <div class="col-md-1">
+                                            <label class="small">Cant. Reserv.</label>
+                                            <input id="txtCantReserSalDet" class="form-control form-control-sm" style="font-size:small" />
+                                        </div>
+                                        <div class="form-group" style="padding:5px">
+                                            <button class="btn btn-primary btn-small" id="btnAddMatExpSalDet" type="button" style="padding: 0;"><i class="fas fa-clipboard-check" ></i>
+                                            </button>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary btn-primary btn-sm" id="btnAddMatExpSalDet" type="button"><i class="fas fa-check-circle"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" style="padding:5px">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary btn-primary btn-sm" id="btnDelMatExpSalDet" type="button"><i class="fas fa-times-circle"></i></button>
+                                            </div>
+                                        </div>
+                                        <div class="form-group" style="padding:5px">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary btn-primary btn-sm" id="btnClearMatExpSalDet" type="button"><i class="fas fa-eraser"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-sm-4 col-lg-12 container">
+                                        <div class="panel panel-primary">
+                                            <div class="panel-body" style="height:280px">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <table id="gridMatExpSalDet" style="width: 100%;" class="table table-striped table-hover nowrap table-bordered dataTable no-footer" role="grid">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Op</th>
+                                                                    <th>Material</th>
+                                                                    <th>Cantidad</th>
+                                                                    <th>Descripción</th>
+                                                                    <th>UM</th>               5
+                                                                    <th>Marca LDS</th>
+                                                                    <th>Kárdex LDS</th>
+                                                                    <th>ID Material</th>
+                                                                    <th>CR Resp.</th>
+                                                                    <th>Emp. Ext</th>           10
+                                                                    <th>CR Dest.</th>
+                                                                    <th>Obra</th>
+                                                                    <th>Ruc</th>
+                                                                    <th>Ficha</th>
+                                                                    <th>Desc. Ficha</th>        15
+                                                                    <th>Factura</th>
+                                                                    <th>Tip. Det</th>
+                                                                    <th>Saldo Rest</th>
+                                                                    <th>Ref. Ing.</th>
+                                                                    <th>Folio</th>              20
+                                                                    <th>Fec. Ing</th>
+                                                                    <th>Largo</th>
+                                                                    <th>Ancho</th>
+                                                                    <th>Área</th>
+                                                                    <th>P. Bruto</th>           25
+                                                                    <th>P. Tara</th>
+                                                                    <th>N° Material</th>
+                                                                    <th>Diámetro</th>
+                                                                    <th>Est. Mat.</th>
+                                                                    <th>P. Neto</th>            30
+                                                                    <th>Factor</th>
+                                                                    <th>Bobina Orig.</th>
+                                                                    <th>F.Bobina Orig</th>
+                                                                </tr>
+                                                            </thead>
+                                                        </table>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="fixed-action-btn horizontal click-to-toggle" style="pointer-events: none;">
+            <a class="btn-floating btn-large btn-menu" style="pointer-events: all;">
+                <i class="fas fa-bars"></i>
+            </a>
+            <ul style="pointer-events: all;">
+                <li id="btnLimpiar" data-toggle="tooltip" title="Limpiar"><a class="btn-floating btn-opcion"><i class="fas fa-broom"></i></a></li>
+                <li id="btnGuardarPM" data-toggle="tooltip" title="Guardar"><a class=" btn-floating btn-opcion"><i class="fas fa-save"></i></a></li>
+                <li id="btnAprobarPM" data-toggle="tooltip" title="Aprobar"><a class="btn-floating btn-opcion"><i class="fas fa-clipboard-check"></i></a></li>
+                <li id="btnDesAprobarPM" data-toggle="tooltip" title="Desaprobar"><a class="btn-floating btn-opcion"><i class="far fa-thumbs-down"></i>></a></li>
+                <li id="btnAnularPM" data-toggle="tooltip" title="Anular"><a class="btn-floating btn-opcion"><i class="fas fa-ban"></i></a></li>
+                <li id="btnImprimirPM" data-toggle="tooltip" title="Imprimir"><a class="btn-floating btn-opcion"><i class="fas fa-print"></i></a></li>
+                <li id="btnExportarPM" data-toggle="tooltip" title="Exportar"><a class="btn-floating btn-opcion"><i class="fas fa-file-excel"></i></a></li>
+            </ul>
+
+        </div>
+        <div style="height:40px">
+
+        </div>
+        <div id="PMPrint" hidden>
+            <div class="row">
+                <div class="col-12">
+                    <h6 style="text-align:center">@ViewBag.Titulo</h6>
+                </div>
+            </div>
+
+
+            <div id="tablaCabPrint">
+                <table>
+                    <tbody>
+                        <tr style="padding:0px;margin:0px">
+                            <td style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px">
+                                    <label class="small" style="padding:0px">Fecha</label>
+                                </div>
+                            </td>
+                            <td width="300px" style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding:0px">
+                                    <label class="small" id="txtFechaPrint" style="padding:0px">:</label>
+                                </div>
+                            </td>
+                            <td width="1px" style="padding:0px">
+                                <div style="padding-left:0px;padding-right:0px;">
+                                    <label class="small">&nbsp;</label>
+                                </div>
+                            </td>
+                            <td style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding: 0px">
+                                    <label class="small" style="padding:0px">CR Destino</label>
+                                </div>
+                            </td>
+                            <td style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding: 0px">
+                                    <label class="small" id="txtCrDestPrint" style="padding:0px">:</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr style="padding: 0px; margin: 0px">
+                            <td style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding: 0px">
+                                    <label class="small" style="padding:0px">Estado</label>
+                                </div>
+                            </td>
+                            <td width="300px" style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding: 0px">
+                                    <label class="small" id="txtEstPrint" style="padding:0px">:</label>
+                                </div>
+                            </td>
+                            <td width="1px" style="padding:0px">
+                                <div style="padding-left:0px;padding-right:0px;">
+                                    <label class="small">&nbsp;</label>
+                                </div>
+                            </td>
+                            <td style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding: 0px">
+                                    <label class="small" style="padding:0px">CR Respons</label>
+                                </div>
+                            </td>
+                            <td style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding: 0px">
+                                    <label class="small" id="txtCrRespPrint" style="padding:0px">:</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr style="padding: 0px; margin: 0px">
+                            <td style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding: 0px">
+                                    <label class="small">Tipo Sol.</label>
+                                </div>
+                            </td>
+                            <td width="300px" style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding: 0px">
+                                    <label class="small" id="txtTipSolPrint">:</label>
+                                </div>
+                            </td>
+                            <td width="1px">
+                                <div style="padding-left: 0px; padding-right: 0px;">
+                                    <label class="small">&nbsp;</label>
+                                </div>
+                            </td>
+                            <td style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding: 0px">
+                                    <label class="small">Tipo Pedido</label>
+                                </div>
+                            </td>
+                            <td style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding: 0px">
+                                    <label class="small" id="txtTipPedPrint">:</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr style="padding: 0px; margin: 0px">
+                            <td style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding: 0px">
+                                    <label class="small">Resp.Retiro</label>
+                                </div>
+                            </td>
+                            <td width="300px" style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding: 0px">
+                                    <label class="small" id="txtRespRetPrint">:</label>
+                                </div>
+                            </td>
+                            <td width="1px">
+                                <div style="padding-left:0px;padding-right:0px;">
+                                    <label class="small">&nbsp;</label>
+                                </div>
+                            </td>
+                            <td style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding: 0px">
+                                    <label class="small">Responsabl.</label>
+                                </div>
+                            </td>
+                            <td style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding: 0px">
+                                    <label class="small" id="txtRespPrint">:</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr style="padding: 0px; margin: 0px">
+                            <td style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding: 0px">
+                                    <label class="small">Lug.Entrega</label>
+                                </div>
+                            </td>
+                            <td width="300px" style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding: 0px">
+                                    <label class="small" id="txtLugEntPrint">:</label>
+                                </div>
+                            </td>
+                            <td width="1px">
+                                <div style="padding-left:0px;padding-right:0px;">
+                                    <label class="small">&nbsp;</label>
+                                </div>
+                            </td>
+                            <td style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding: 0px">
+                                    <label class="small">N°SST</label>
+                                </div>
+                            </td>
+                            <td style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding: 0px">
+                                    <label class="small" id="txtSstPrint">:</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr style="padding: 0px; margin: 0px">
+                            <td style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding: 0px">
+                                    <label class="small">Observac.:</label>
+                                </div>
+                            </td>
+                            <td width="300px" style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding: 0px">
+                                    <label class="small" id="txtObsPrint">:</label>
+                                </div>
+                            </td>
+                            <td width="1px">
+                                <div style="padding-left:0px;padding-right:0px;">
+                                    <label class="small">&nbsp;</label>
+                                </div>
+                            </td>
+                            <td style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding: 0px">
+                                    <label class="small">Contratista</label>
+                                </div>
+                            </td>
+                            <td style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding: 0px">
+                                    <label class="small" id="txtContraPrint">:</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr style="padding: 0px; margin: 0px">
+                            <td style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding: 0px">
+                                    <label class="small">Actividad</label>
+                                </div>
+                            </td>
+                            <td width="300px" style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding: 0px">
+                                    <label class="small" id="txtActivPrint">:</label>
+                                </div>
+                            </td>
+                            <td width="1px">
+                                <div style="padding-left:0px;padding-right:0px;">
+                                    <label class="small">&nbsp;</label>
+                                </div>
+                            </td>
+                            <td style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding: 0px">
+                                    <label class="small">Proyecto</label>
+                                </div>
+                            </td>
+                            <td style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding: 0px">
+                                    <label class="small" id="txtProyPrint">:</label>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr style="padding: 0px; margin: 0px">
+                            <td style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding: 0px">
+                                    <label class="small">Ubicación G.</label>
+                                </div>
+                            </td>
+                            <td width="300px" style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding: 0px">
+                                    <label class="small" id="txtUbiGeoPrint">:</label>
+                                </div>
+                            </td>
+                            <td width="1px">
+                                <div style="padding-left:0px;padding-right:0px;">
+                                    <label class="small">&nbsp;</label>
+                                </div>
+                            </td>
+                            <td style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding: 0px">
+                                    <label class="small">Calidad Red</label>
+                                </div>
+                            </td>
+                            <td style="padding: 0px; margin: 0px">
+                                <div style="text-align: left; font-size: 13px; padding: 0px">
+                                    <label class="small" id="txtCalRedPrint">:</label>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div style="text-align:left">
+                                        <label class="small">Observ.:</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div style="text-align:left">
+                                        <label class="small" id="txtObsPrint">:</label>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+
+            <div class="container-fluid" style="height:inherit">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="panelTabsPrint">
+
+                            <div class="row" id="tablaDetPrint">
+                                <div class="col-12">
+                                    <table id="gridPMPrint" style="width: 100%;" role="grid">
+                                        <thead class="table-bordered">
+                                            <tr>
+                                                <th style="text-align: left; font-size: 12px" width="15px">N°</th>
+                                                <th style="text-align: left; font-size: 12px;" width="20px">Material</th>
+                                                <th style="text-align: left; font-size: 12px;" width="50px">Ubicación</th>
+                                                <th style="text-align: center; font-size: 12px; padding-right: 0px; ">Descripción Material</th>
+                                                <th style="text-align: left; font-size: 12px; padding-right: 0px;">UM</th>
+                                                <th style="text-align: center; font-size: 12px;">Cantidad</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="cuerpoDetPrint"></tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="tablaPiePrint">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div style="text-align: left; font-size: 14px">
+                                    <label class="small">Aprobado Por:</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="text-align: left; font-size: 14px">
+                                    <label class="small" id="txtAprobPiePrint">:</label>
+                                </div>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+                                <div style="text-align: left; font-size: 14px">
+                                    <label class="small">Fecha:</label>
+                                </div>
+                            </td>
+                            <td width="220px">
+                                <div style="text-align: left; font-size: 14px">
+                                    <label class="small" id="txtFechaPiePrint">:</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <label class="small">&nbsp;</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="text-align: left; font-size: 14px">
+                                    <label class="small">Firma:</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="text-align: left; font-size: 14px">
+                                    <label class="small" id="txtFirmaPiePrint"></label>
+                                </div>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+
+        </div>
+        <div id="DivErrores">
+        </div>
+    </main>
+
+    <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center fixed-bottom" style="min-height: 80px; pointer-events: none;">
+        <div id="toastSeleccionados" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true" style="background-color: black; opacity: 0.7; pointer-events: all;">
+            <div class="toast-header" style="background-color: transparent; color: white;">
+                <span class="contador">0</span>&nbsp;seleccionados
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close" style="color: white; text-shadow: none; opacity: 1; outline: none;">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!--MODALES  -->
+    <!-- Pedido por Camion -->
+    <div class="modal" id="modalCamion" tabindex="-1" role="dialog" aria-labelledby="camionModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title text-center" id="salirModalLabel">Salir</h4>
+                </div>
+                <div class="navbar-modal navbar navbar-default navbar-collapse">
+                    <div class="col-md-3 col-sm-4 col-lg-12 container">
+                        <div class="form-check-inline  col-md-12">
+                            <div class="col-md-2">
+                                <label class="small">Contratista</label>
+                            </div>
+                            <div class="col-md-3">
+                                <input id="txtContraCamion" class="form-control form-control-sm" style="font-size: small" disabled />
+                            </div>
+                            <div class="col-md-7">
+                                <input id="txtDescContraCamion" class="form-control form-control-sm" style="font-size: small" disabled />
+                            </div>
+                        </div>
+                        <div class="form-check-inline  col-md-12">
+                            <div class="col-md-2">
+                                <label class="small">Placa</label>
+                            </div>
+                            <div class="col-md-3">
+                                <input id="txtPlacaCamion" class="form-control form-control-sm" style="font-size: small" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="modal-body">
+
+                    <div class="row form-group">
+                        <div class="col-md-3 col-sm-4 col-lg-10 container">
+                            <div class="panel panel-primary">
+                                <h6>Opciones</h6>
+                                <div class="panel-body" style="height:180px">
+                                    
+                                    <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                        <div class="col-md-3" style="padding-left:0px">
+                                            <input class="form-check-input" type="radio" name="opRadios" id="rdbSstC" value="option1" checked>Por SST
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="input-group">
+                                                <input id="txtSstCamion" class="form-control form-control-sm" style="font-size: small" maxlength="7" />
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    
+                                    <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                        <div class="col-md-3" style="padding-left:0px">
+                                            <input class="form-check-input" type="radio" name="opRadios" id="rdbPaqueteC" value="option2">Por Paquete
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="input-group">
+                                                <input id="txtIdPaqCamion" class="form-control form-control-sm" style="font-size: small" maxlength="10" />
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-outline-secondary btn-primary btn-sm" id="btnBuscarPaqueteCamion" type="button"><i class="fas fa-search"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3" style="padding-left:0px">
+                                            <div class="form-check-inline">
+                                                <label for="txtDiferenciaCamion" class="form-check-label small">
+                                                    <input type="checkbox" id="chkDiferenciaCamion" class="form-check-input" name="Diferencia">
+                                                    Diferencia
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+ 
+                                    <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                        <div class="col-md-3" style="padding-left:0px">
+                                            <input class="form-check-input" type="radio" name="opRadios" id="rdbMaterialC" value="option3">Por Material
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="input-group">
+                                                <input id="txtGrupoCamion" class="form-control form-control-sm" style="font-size: small" maxlength="3" />
+                                                <input id="txtFolioArtCamion" class="form-control form-control-sm" style="font-size:small" maxlength="4" />
+                                                <input id="txtMarcaCamion" class="form-control form-control-sm" style="font-size:small" maxlength="3" onkeyup="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" />
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-outline-secondary btn-primary btn-sm" id="btnBuscarMaterialCamion" type="button"><i class="fas fa-search"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="input-group">
+                                                <label class="small">Cantidad</label>
+                                                <label class="small">&nbsp;</label>
+                                                <input id="txtCantCamion" class="form-control form-control-sm" style="font-size:small" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                        <div class="col-md-3" style="padding-left:0px">
+
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="input-group">
+                                                <input id="lblDescMatCamion" class="form-control form-control-sm" style="font-size: small" disabled />
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-md-offset-5 col-md-2">
+                        <button type="button" id="btnCargarCamion" class="btn btn-primary btn-sm btn-block">Cargar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ 
+    <div class="modal" id="modalExportacion" tabindex="-1" role="dialog" aria-labelledby="exportacionModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title text-center" id="salirModalLabel">Salir</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row form-group">
+                        <div class="col-md-3 col-sm-4 col-lg-10 container">
+                            <div class="panel panel-primary">
+                                <h6>Exportación de Datos</h6>
+                                <div class="panel-body" style="height:180px">
+
+                                    <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                        <div class="col-md-6">
+                                            <input class="form-check-input" type="checkbox" id="chkPedidoMat" value="option1" checked>Exportar Pedido
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input class="form-check-input" type="checkbox" id="chkDespachoMat" value="option2" checked>Exportar Despacho
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-md-offset-5 col-md-2">
+                        <button type="button" id="btnExportarOpcPM" class="btn btn-primary btn-sm btn-block">Exportar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="modal" id="modalReservaGuia" tabindex="-1" role="dialog" aria-labelledby="ReservaGuiaModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title text-center" id="salirModalLabel"></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <label class="small" id="TituloDesMat">DESPACHOS asociados a Pedidos de Material</label>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-offset-5 col-md-12">
+                                <table id="gridDespachoMat" align="center" border="1" style="width:auto; height:10%;" class="table table-condensed table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Bod.</th>
+                                            <th>Pedido Folio</th>
+                                            <th>Pedido Fecha</th>
+                                            <th>Pedido Estado</th>
+                                            <th>Despacho Folio</th>
+                                            <th>Despacho Fecha</th>
+                                            <th>Despacho F. Aprob</th>
+                                            <th>Despacho Estado</th>
+                                            <th>Guia Despacho</th>
+                                            <th>Fol. Ant. CODISA</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <label class="small" id="TituloPC">PEDIDOS DE COMPRA asociados a Pedidos de Material</label>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-offset-5 col-md-12">
+                                <table id="gridPedidoCompra" align="center" border="1" style="width:auto; height:10%;" class="table table-condensed table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Bodega</th>
+                                            <th>Solicitud Folio</th>
+                                            <th>Solicitud Fecha</th>
+                                            <th>Solicitud Estado</th>
+                                            <th>P. Compra Folio</th>
+                                            <th>P. Compra Fecha</th>
+                                            <th>P. Compra Estado</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-md-offset-5 col-md-2">
+                        <button type="button" data-dismiss="modal" class="btn btn-primary btn-sm btn-block">Regresar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modalSaldoMat" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title text-center" id="salirModalLabel">Búsqueda de Saldos</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row form-group">
+                        <div class="col-md-3 col-sm-4 col-lg-10 container">
+                            <div class="panel panel-primary">
+                                <div class="panel-body" style="height:140px">
+                                 
+                                    <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                        <div class="col-md-3" style="padding-left:0px">
+                                            <label class="small">Matrícula</label>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="input-group">
+                                                <input id="txtMatriculaSaldo" class="form-control form-control-sm" style="font-size: small" maxlength="10" />
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                 
+                                    <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                        <div class="col-md-3" style="padding-left:0px">
+                                            <label class="small">Descripción</label>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="input-group">
+                                                <input id="txtDescSaldo" class="form-control form-control-sm" style="font-size: small" maxlength="150" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-check-inline  col-md-12" style="padding-left:2px">
+                                        <div class="col-md-3" style="padding-left:0px">
+                                            <label class="small">CR</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="input-group">
+                                                <input id="txtCrSaldo" class="form-control form-control-sm" style="font-size: small" maxlength="6" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                     
+                                    <div class="form-check-inline  col-md-12" stylclass="col-md-12e=" padding-left:2px">
+                                        <div class="col-md-3" style="padding-left:0px">
+                                            <label class="small">Bodega</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="input-group">
+                                                <input id="txtBodegaSaldo" class="form-control form-control-sm" style="font-size: small" maxlength="3" />
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-offset-5 col-md-12">
+                                <table id="gridSaldoMaterial" align="center" border="1" style="width:auto; height:30%;" class="table table-condensed table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Empresa</th>
+                                            <th>Grupo</th>
+                                            <th>Folio</th>
+                                            <th>Descripción</th>
+                                            <th>Cr. Responsable</th>
+                                            <th>Almacén</th>
+                                            <th>Saldo</th>
+                                            <th>Unidad</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="form-check-inline  col-md-12">
+                        <div class="col-md-2" style="padding-left:0px">
+                            <button type="button" id="btnLeerSaldoMat" class="btn btn-primary btn-sm btn-block">Leer</button>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" data-dismiss="modal" class="btn btn-primary btn-sm btn-block">Exportar</button>
+                        </div>
+
+                    </div>
+                    <div>
+                        <button type="button" id="btnLeerSaldoMat" class="btn btn-primary btn-sm btn-block">Leer</button>
+                        <button type="button" data-dismiss="modal" class="btn btn-primary btn-sm btn-block">Exportar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

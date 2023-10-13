@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Test</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="../js/jseventos.js"></script>
+    <!-- <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
+    <link rel="stylesheet" href="../../css/style2.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+</head>
+<body>
+    <div class="panel panel-default m-b-none">
+        <div class="panel-heading principal">
+            <h4 style="color: white;">
+                FILTRO - @Model.Empresa
+            </h4>
+        </div>
+        <div class="panel-title controles">
+         </div>
+        <div class="panel-footer">
+            <div class="row">
+                <div class="col-sm-12">
+                    <input type="file" name="file" style="display:none;" id="inpFile" accept=".xlsx" onchange="MostrarNombreArchivo();"/>
+                    <a class="btn btn-blue" id="btnExplorar" href="#" onclick="document.getElementById('inpFile').click(); MostrarNombreArchivo();">Seleccionar Excel</a>
+                    <input type="text" id="lblNombreArchivo" enableviewstate="false" disabled="disabled"/>
+                    <a class="btn btn-success" id="btnBuscar" href="#" onclick="RegistrarDocumentos()">Registrar Documentos</a>
+                    <a class="btn btn-warning" id="btnLimpiar" href="#" onclick="Limpiar()">Limpiar</a>
+                    <a class="btn btn-danger" id="btnCancelar" href="#" onclick="CancelarDetalle()">Cancelar</a>
+                </div>
+            </div>
+        </div>
+        <div id="imgCargando" style="display: none; position: fixed; top: 50%; left: 50%; z-index:999">
+            <!-- <img src="@Url.Content("~/Img/cargando.gif")"/> -->
+        </div>
+        <div id ="Resultados" class="panel-body">
+            <ul id="opciones" class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#DocumentosCargados">Documentos cargados</a></li>
+                 <li role="presentation"><a href="#ResultadoProveedores">Proveedores</a></li> 
+            </ul>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="DocumentosCargados">
+                    <div class="panel-group">
+                        <div class="panel panel-default m-t">
+                            <div class="panel-heading child">
+                                <strong>Resultados</strong>
+                            </div>
+                            <div class="panel-body">
+                                <div id="divDocumentosCargados" class="panel-gray">
+                                </div>                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="ResultadoProveedores">
+                    <div class="panel-group">
+                        <div class="panel panel-default m-t">
+                            <div class="panel-heading child">
+                                <strong>Resultados</strong>
+                            </div>
+                            <div class="panel-body">
+                                <div id="divProveedores" class="panel-gray">
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- <script type="text/javascript">
+        $('#opciones a').click(function (e) {
+            e.preventDefault();
+            $.each($("#opciones a"), function (key, value) {
+                var tab = $(this).attr('href');
+                $(tab).removeClass("in active");
+                $(this).parent().removeClass("active");
+            });
+            var tab = $(this).attr('href');
+            $(tab).addClass("in active");
+            $(this).parent().addClass("active");
+        })
+</script> -->
+</html>
