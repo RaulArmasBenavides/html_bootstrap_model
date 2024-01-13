@@ -6,15 +6,14 @@
     <title>Test</title>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <script src="../js/jseventos.js"></script>
-    <!-- <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" /> -->
     <link rel="stylesheet" href="../../css/style2.css">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
 </head>
 <body>
     <div class="panel panel-default m-b-none">
         <div class="panel-heading principal">
-            <h4 style="color: white;">
-                FILTRO - @Model.Empresa
+            <h4>
+                FILTRO 
             </h4>
         </div>
         <div class="panel-title controles">
@@ -31,9 +30,9 @@
                 </div>
             </div>
         </div>
-        <div id="imgCargando" style="display: none; position: fixed; top: 50%; left: 50%; z-index:999">
-            <!-- <img src="@Url.Content("~/Img/cargando.gif")"/> -->
-        </div>
+        <!-- <div id="imgCargando" style="display: none; position: fixed; top: 50%; left: 50%; z-index:999">
+             <img src="@Url.Content("~/Img/cargando.gif")"/> 
+        </div> -->
         <div id ="Resultados" class="panel-body">
             <ul id="opciones" class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active"><a href="#DocumentosCargados">Documentos cargados</a></li>
@@ -70,18 +69,4 @@
         </div>
     </div>
 </body>
-
-<!-- <script type="text/javascript">
-        $('#opciones a').click(function (e) {
-            e.preventDefault();
-            $.each($("#opciones a"), function (key, value) {
-                var tab = $(this).attr('href');
-                $(tab).removeClass("in active");
-                $(this).parent().removeClass("active");
-            });
-            var tab = $(this).attr('href');
-            $(tab).addClass("in active");
-            $(this).parent().addClass("active");
-        })
-</script> -->
 </html>
